@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>성주 ❤ 영아 모바일 청첩장</title>
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
+<body>
+  <h1>모바일 청첩장</h1>
+  <p>아래 버튼을 눌러 카카오톡으로 공유하세요.</p>
+  <button id="kakao-share">카카오톡으로 공유하기</button>
+
+  <script>
+    Kakao.init('278f6764ad4d40712f4c3114dbd82167'); // 여기에 JavaScript 키 붙여넣기
+    Kakao.Share.createDefaultButton({
+      container: '#kakao-share',
+      objectType: 'feed',
+      content: {
+        title: '노성주 ❤ 박영아의 결혼식에 초대합니다.',
+        imageUrl: 'https://directwedcard.com/sungjuyoungah251018', //
+        link: {
+          mobileWebUrl: 'https://directwedcard.com/sungjuyoungah251018',
+          webUrl: 'https://directwedcard.com/sungjuyoungah251018'
+        }
+      },
+      buttons: [
+        {
+          title: '청첩장 보기',
+          link: {
+            mobileWebUrl: 'https://directwedcard.com/sungjuyoungah251018',
+            webUrl: 'https://directwedcard.com/sungjuyoungah251018'
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+</html>
