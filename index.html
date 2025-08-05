@@ -2,52 +2,38 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>모바일 청첩장 안내</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    p {
-      margin-top: 20px;
-      color: gray;
-    }
-  </style>
+  <title>성주 ❤ 영아 모바일 청첩장</title>
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
-  <h1>모바일 청첩장 안내</h1>
-  <p>버튼을 누르면 청첩장을 열 수 있습니다</p>
-  <button onclick="openInvitation()">청첩장 열기</button>
+  <h1>모바일 청첩장</h1>
+  <p>아래 버튼을 눌러 카카오톡으로 공유하세요.</p>
+  <button id="kakao-share">카카오톡으로 공유하기</button>
 
   <script>
-    function openInvitation() {
-      const url = "https://directwedcard.com/sungjuyoungah251018";
-      const ua = navigator.userAgent.toLowerCase();
-
-      // Android인 경우 intent 시도
-      if (ua.includes("android")) {
-        location.href =
-          "intent://send?msg=청첩장을 확인해보세요! " + url +
-          "#Intent;scheme=kakaolink;package=com.kakao.talk;end;";
-      } else {
-        // 그 외 (iOS, PC 등)은 일반 링크로 이동
-        window.location.href = url;
-      }
-    }
+    Kakao.init('278f6764ad4d40712f4c3114dbd82167'); // 여기에 JavaScript 키 붙여넣기
+    Kakao.Share.createDefaultButton({
+      container: '#kakao-share',
+      objectType: 'feed',
+      content: {
+        title: '성주 ❤ 영아 모바일 청첩장',
+        description: '우리의 소중한 날에 초대합니다.',
+        imageUrl: 'https://via.placeholder.com/300x200.png?text=Wedding+Invitation', // 이미지 없으면 이거 사용
+        link: {
+          mobileWebUrl: 'https://directwedcard.com/sungjuyoungah251018',
+          webUrl: 'https://directwedcard.com/sungjuyoungah251018'
+        }
+      },
+      buttons: [
+        {
+          title: '청첩장 보기',
+          link: {
+            mobileWebUrl: 'https://directwedcard.com/sungjuyoungah251018',
+            webUrl: 'https://directwedcard.com/sungjuyoungah251018'
+          }
+        }
+      ]
+    });
   </script>
 </body>
 </html>
