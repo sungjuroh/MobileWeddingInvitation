@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모바일 청첩장 안내</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    p {
+      margin-top: 20px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>모바일 청첩장 안내</h1>
+  <p>버튼을 누르면 청첩장을 열 수 있습니다</p>
+  <button onclick="openInvitation()">청첩장 열기</button>
+
+  <script>
+    function openInvitation() {
+      const url = "https://directwedcard.com/sungjuyoungah251018";
+      const ua = navigator.userAgent.toLowerCase();
+
+      // Android인 경우 intent 시도
+      if (ua.includes("android")) {
+        location.href =
+          "intent://send?msg=청첩장을 확인해보세요! " + url +
+          "#Intent;scheme=kakaolink;package=com.kakao.talk;end;";
+      } else {
+        // 그 외 (iOS, PC 등)은 일반 링크로 이동
+        window.location.href = url;
+      }
+    }
+  </script>
+</body>
+</html>
